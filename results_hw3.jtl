@@ -1,0 +1,20 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1792212201779,324,Step 1 - JDBC Request (Fetch TestUsers),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,248,0,1,1,null,322,0,319
+1792212202397,505,Step 2 - GET /api/users/1 (Without API Key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,2685,125,1,1,https://reqres.in/api/users/1,502,0,112
+1792212202920,213,Step 3 - GET /api/users (Authorized with x-api-key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,3422,183,1,1,https://reqres.in/api/users?page=1,212,0,0
+1792212203189,16,Step 4 - Log Warning in JMeter,200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,156,0,1,1,null,0,0,0
+1792212203206,288,Step 2 - GET /api/users/2 (Without API Key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,2688,125,1,1,https://reqres.in/api/users/2,288,0,0
+1792212203496,35,Step 3 - GET /api/users (Authorized with x-api-key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,3422,183,1,1,https://reqres.in/api/users?page=1,35,0,0
+1792212203534,0,Step 4 - Log Warning in JMeter,200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,156,0,1,1,null,0,0,0
+1792212203535,205,Step 2 - GET /api/users/3 (Without API Key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,2688,125,1,1,https://reqres.in/api/users/3,205,0,0
+1792212203741,39,Step 3 - GET /api/users (Authorized with x-api-key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,3422,183,1,1,https://reqres.in/api/users?page=1,39,0,0
+1792212203784,0,Step 4 - Log Warning in JMeter,200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,147,0,1,1,null,0,0,0
+1792212203785,327,Step 2 - GET /api/users/4 (Without API Key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,2680,125,1,1,https://reqres.in/api/users/4,326,0,0
+1792212204114,29,Step 3 - GET /api/users (Authorized with x-api-key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,3422,183,1,1,https://reqres.in/api/users?page=1,29,0,0
+1792212204148,0,Step 4 - Log Warning in JMeter,200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,144,0,1,1,null,0,0,0
+1792212204150,210,Step 2 - GET /api/users/5 (Without API Key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,2685,125,1,1,https://reqres.in/api/users/5,210,0,0
+1792212204364,33,Step 3 - GET /api/users (Authorized with x-api-key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,3422,183,1,1,https://reqres.in/api/users?page=1,33,0,0
+1792212204402,1,Step 4 - Log Warning in JMeter,200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,162,0,1,1,null,0,0,0
+1792212204404,210,Step 2 - GET /api/users/6 (Without API Key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,2700,125,1,1,https://reqres.in/api/users/6,209,0,0
+1792212204615,28,Step 3 - GET /api/users (Authorized with x-api-key),200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,3422,183,1,1,https://reqres.in/api/users?page=1,27,0,0
+1792212204648,1,Step 4 - Log Warning in JMeter,200,OK,HW 3 - Performance Testing Thread Group 1-1,text,true,,156,0,1,1,null,0,0,0

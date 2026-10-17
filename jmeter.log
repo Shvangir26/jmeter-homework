@@ -1,0 +1,74 @@
+2026-10-17 08:47:25,200 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-10-17 08:47:25,211 INFO o.a.j.JMeter: Loading user properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/user.properties
+2026-10-17 08:47:25,212 INFO o.a.j.JMeter: Loading system properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/system.properties
+2026-10-17 08:47:25,212 INFO o.a.j.JMeter: Setting JMeter property: DB_USER=sa
+2026-10-17 08:47:25,212 INFO o.a.j.JMeter: Setting JMeter property: DB_PASSWORD=TestPass123!
+2026-10-17 08:47:25,212 INFO o.a.j.JMeter: Setting JMeter property: REQRES_API_KEY=reqres-free-v1
+2026-10-17 08:47:25,214 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-10-17 08:47:25,214 INFO o.a.j.JMeter: Version 5.6.3
+2026-10-17 08:47:25,214 INFO o.a.j.JMeter: java.version=21.0.12.1
+2026-10-17 08:47:25,215 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-10-17 08:47:25,215 INFO o.a.j.JMeter: os.name=Mac OS X
+2026-10-17 08:47:25,215 INFO o.a.j.JMeter: os.arch=aarch64
+2026-10-17 08:47:25,215 INFO o.a.j.JMeter: os.version=27.0.1
+2026-10-17 08:47:25,215 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-10-17 08:47:25,215 INFO o.a.j.JMeter: java.awt.headless=true
+2026-10-17 08:47:25,215 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-10-17 08:47:25,215 INFO o.a.j.JMeter: Available Processors =10
+2026-10-17 08:47:25,219 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-10-17 08:47:25,219 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-10-17 08:47:25,219 INFO o.a.j.JMeter: JMeterHome=/opt/homebrew/Cellar/jmeter/5.6.3/libexec
+2026-10-17 08:47:25,219 INFO o.a.j.JMeter: user.dir  =/Users/test/jmeter-homework
+2026-10-17 08:47:25,220 INFO o.a.j.JMeter: PWD       =/Users/test/jmeter-homework
+2026-10-17 08:47:25,223 INFO o.a.j.JMeter: IP: 127.0.0.1 Name: tests-MacBook-Pro.local FullName: localhost
+2026-10-17 08:47:25,228 INFO o.a.j.s.FileServer: Default base='/Users/test/jmeter-homework'
+2026-10-17 08:47:25,229 INFO o.a.j.s.FileServer: Set new base='/Users/test/jmeter-homework'
+2026-10-17 08:47:25,317 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-10-17 08:47:25,333 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-10-17 08:47:25,335 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-10-17 08:47:25,336 INFO o.a.j.s.SaveService: Loading file: JMeter_HW3_TestPlan.jmx
+2026-10-17 08:47:25,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-17 08:47:25,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-17 08:47:25,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-17 08:47:25,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-17 08:47:25,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-10-17 08:47:25,373 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-10-17 08:47:25,406 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-10-17 08:47:25,412 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-10-17 08:47:25,413 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-10-17 08:47:25,413 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-10-17 08:47:25,415 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-10-17 08:47:25,415 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-10-17 08:47:25,432 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-2.0.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-10-17 08:47:25,447 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-casutg-3.1.1.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-10-17 08:47:25,452 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-10-17 08:47:25,647 INFO o.a.j.JMeter: Running test (1792212445647)
+2026-10-17 08:47:25,659 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : HW 3 - Performance Testing Thread Group
+2026-10-17 08:47:25,659 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group HW 3 - Performance Testing Thread Group.
+2026-10-17 08:47:25,659 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-10-17 08:47:25,659 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 delayedStart=false
+2026-10-17 08:47:25,661 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-10-17 08:47:25,661 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-10-17 08:47:25,662 INFO o.a.j.t.JMeterThread: Thread started: HW 3 - Performance Testing Thread Group 1-1
+2026-10-17 08:47:25,667 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-10-17 08:47:25,667 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-10-17 08:47:25,668 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-10-17 08:47:25,668 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-10-17 08:47:26,248 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = tests-MacBook-Pro.local
+2026-10-17 08:47:26,251 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-10-17 08:47:26,341 INFO o.a.j.p.h.s.h.LazyLayeredConnectionSocketFactory: Setting up HTTPS TrustAll Socket Factory
+2026-10-17 08:47:26,343 INFO o.a.j.u.JsseSSLManager: Using default SSL protocol: TLS
+2026-10-17 08:47:26,343 INFO o.a.j.u.JsseSSLManager: SSL session context: per-thread
+2026-10-17 08:47:26,368 INFO o.a.j.u.SSLManager: JmeterKeyStore Location:  type JKS
+2026-10-17 08:47:26,369 INFO o.a.j.u.SSLManager: KeyStore created OK
+2026-10-17 08:47:26,370 WARN o.a.j.u.SSLManager: Keystore file not found, loading empty keystore
+2026-10-17 08:47:27,080 WARN o.a.j.p.j.s.J.Step 4 - Log Warning in JMeter: [Step 4 Warning] User ID=1: Concatenated email ('georgebluth@reqres.in' / 'george.bluth@reqres.in') does not match response email ('george.bluth@reqres.in')
+2026-10-17 08:47:27,347 WARN o.a.j.p.j.s.J.Step 4 - Log Warning in JMeter: [Step 4 Warning] User ID=2: Concatenated email ('janetweaver@reqres.in' / 'janet.weaver@reqres.in') does not match response email ('janet.weaver@reqres.in')
+2026-10-17 08:47:27,601 WARN o.a.j.p.j.s.J.Step 4 - Log Warning in JMeter: [Step 4 Warning] User ID=3: Concatenated email ('emmawong@reqres.in' / 'emma.wong@reqres.in') does not match response email ('emma.wong@reqres.in')
+2026-10-17 08:47:27,844 WARN o.a.j.p.j.s.J.Step 4 - Log Warning in JMeter: [Step 4 Warning] User ID=4: Concatenated email ('eveholt@reqres.in' / 'eve.holt@reqres.in') does not match response email ('eve.holt@reqres.in')
+2026-10-17 08:47:28,091 WARN o.a.j.p.j.s.J.Step 4 - Log Warning in JMeter: [Step 4 Warning] User ID=5: Concatenated email ('charlesmorris@reqres.in' / 'charles.morris@reqres.in') does not match response email ('charles.morris@reqres.in')
+2026-10-17 08:47:28,329 WARN o.a.j.p.j.s.J.Step 4 - Log Warning in JMeter: [Step 4 Warning] User ID=6: Concatenated email ('traceyramos@reqres.in' / 'tracey.ramos@reqres.in') does not match response email ('tracey.ramos@reqres.in')
+2026-10-17 08:47:28,330 INFO o.a.j.t.JMeterThread: Thread is done: HW 3 - Performance Testing Thread Group 1-1
+2026-10-17 08:47:28,330 INFO o.a.j.t.JMeterThread: Thread finished: HW 3 - Performance Testing Thread Group 1-1
+2026-10-17 08:47:28,335 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-10-17 08:47:28,343 INFO o.a.j.r.Summariser: summary =     19 in 00:00:03 =    7.1/s Avg:   118 Min:     1 Max:   411 Err:     0 (0.00%)
