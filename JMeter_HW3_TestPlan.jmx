@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="JMeter - HW 3 (Performance Testing 3)" enabled="true">
+      <stringProp name="TestPlan.comments">Step 1: SQL Server Integration | Step 2: ReqRes Missing API Key | Step 3: Authorized Users &amp; Email Pattern | Step 4: Loop &amp; If Controllers | Step 5: Non-GUI CSV Execution</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="DB_URL" elementType="Argument">
+            <stringProp name="Argument.name">DB_URL</stringProp>
+            <stringProp name="Argument.value">jdbc:sqlserver://localhost:1433;databaseName=TestDB;encrypt=true;trustServerCertificate=true;</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DB_DRIVER" elementType="Argument">
+            <stringProp name="Argument.name">DB_DRIVER</stringProp>
+            <stringProp name="Argument.value">com.microsoft.sqlserver.jdbc.SQLServerDriver</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DB_USER" elementType="Argument">
+            <stringProp name="Argument.name">DB_USER</stringProp>
+            <stringProp name="Argument.value">sa</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DB_PASSWORD" elementType="Argument">
+            <stringProp name="Argument.name">DB_PASSWORD</stringProp>
+            <stringProp name="Argument.value">TestPass123!</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="REQRES_PROTOCOL" elementType="Argument">
+            <stringProp name="Argument.name">REQRES_PROTOCOL</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="REQRES_HOST" elementType="Argument">
+            <stringProp name="Argument.name">REQRES_HOST</stringProp>
+            <stringProp name="Argument.value">reqres.in</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="REQRES_API_KEY" elementType="Argument">
+            <stringProp name="Argument.name">REQRES_API_KEY</stringProp>
+            <stringProp name="Argument.value">reqres-free-v1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="SQL Server JDBC Connection Configuration" enabled="true">
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="checkQuery">SELECT 1</stringProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="connectionProperties"></stringProp>
+        <stringProp name="dataSource">mssql_pool</stringProp>
+        <stringProp name="dbUrl">${DB_URL}</stringProp>
+        <stringProp name="driver">${DB_DRIVER}</stringProp>
+        <stringProp name="initQuery"></stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="password">TestPass123!</stringProp>
+        <stringProp name="poolMax">10</stringProp>
+        <boolProp name="preinit">false</boolProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <stringProp name="username">${DB_USER}</stringProp>
+      </JDBCDataSource>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="HW 3 - Performance Testing Thread Group" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Step 1 - JDBC Request (Fetch TestUsers)" enabled="true">
+          <stringProp name="dataSource">mssql_pool</stringProp>
+          <stringProp name="query">SELECT id, first_name, last_name, email FROM TestUsers ORDER BY id;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as Strings</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+          <stringProp name="resultVariable">sql_users_list</stringProp>
+          <stringProp name="variableNames">db_id,db_first_name,db_last_name,db_email</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Step 4 - Loop Controller (Iterate Over SQL Users)" enabled="true">
+          <stringProp name="LoopController.loops">${db_id_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="SQL User Row Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">${db_id_#}</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">row_idx</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">true</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Step 2 - GET /api/users/${id} (Without API Key)" enabled="true">
+            <stringProp name="HTTPSampler.domain">${REQRES_HOST}</stringProp>
+            <stringProp name="HTTPSampler.protocol">${REQRES_PROTOCOL}</stringProp>
+            <stringProp name="HTTPSampler.path">/api/users/${id}</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Bind Current Row SQL Variables (id, first_name, last_name, email)" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">def idx = vars.get(&quot;row_idx&quot;)
+vars.put(&quot;id&quot;, vars.get(&quot;db_id_&quot; + idx) ?: &quot;1&quot;)
+vars.put(&quot;first_name&quot;, vars.get(&quot;db_first_name_&quot; + idx) ?: &quot;george&quot;)
+vars.put(&quot;last_name&quot;, vars.get(&quot;db_last_name_&quot; + idx) ?: &quot;bluth&quot;)
+vars.put(&quot;email&quot;, vars.get(&quot;db_email_&quot; + idx) ?: &quot;george.bluth@reqres.in&quot;)
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Step 2 - Extract Error Message ($.error)" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">error_msg</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.error</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">ERROR_NOT_FOUND</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Step 2 - Assert Error is Missing API Key (Ignore Status Code)" enabled="false">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1240244675">(?i)Missing API Key</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message">Expected error message &apos;Missing API Key&apos; in $.error</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">true</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+              <stringProp name="Assertion.scope">variable</stringProp>
+              <stringProp name="Scope.variable">error_msg</stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Step 3 - GET /api/users (Authorized with x-api-key)" enabled="true">
+            <stringProp name="HTTPSampler.domain">${REQRES_HOST}</stringProp>
+            <stringProp name="HTTPSampler.protocol">${REQRES_PROTOCOL}</stringProp>
+            <stringProp name="HTTPSampler.path">/api/users</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="page" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">page</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Step 3 - HTTP Header Manager (Authorization)" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">x-api-key</stringProp>
+                  <stringProp name="Header.value">${REQRES_API_KEY}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Step 3 - Extract User Email, First Name, Last Name" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">resp_email;resp_first_name;resp_last_name</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.data[?(@.id == ${id})].email;$.data[?(@.id == ${id})].first_name;$.data[?(@.id == ${id})].last_name</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1;1;1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND;NOT_FOUND;NOT_FOUND</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Step 3 - Build Expected Lowercase Email Pattern" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">def fn = (vars.get(&quot;resp_first_name&quot;) != &quot;NOT_FOUND&quot; &amp;&amp; vars.get(&quot;resp_first_name&quot;)) ? vars.get(&quot;resp_first_name&quot;) : vars.get(&quot;first_name&quot;)
+def ln = (vars.get(&quot;resp_last_name&quot;) != &quot;NOT_FOUND&quot; &amp;&amp; vars.get(&quot;resp_last_name&quot;)) ? vars.get(&quot;resp_last_name&quot;) : vars.get(&quot;last_name&quot;)
+
+// Strict concatenation: first_name + last_name + @reqres.in (lowercase)
+def concatNoDot = (fn + ln).toLowerCase() + &quot;@reqres.in&quot;
+// Dot concatenation used by ReqRes: first_name.last_name@reqres.in (lowercase)
+def concatWithDot = fn.toLowerCase() + &quot;.&quot; + ln.toLowerCase() + &quot;@reqres.in&quot;
+
+// SQL-based concatenation for Step 4 comparison against response email
+def sqlFn = (vars.get(&quot;first_name&quot;) ?: fn).toLowerCase()
+def sqlLn = (vars.get(&quot;last_name&quot;) ?: ln).toLowerCase()
+def concatenatedEmail = sqlFn + &quot;.&quot; + sqlLn + &quot;@reqres.in&quot;
+
+vars.put(&quot;concat_no_dot_email&quot;, concatNoDot)
+vars.put(&quot;concat_dot_email&quot;, concatWithDot)
+vars.put(&quot;concatenated_email&quot;, concatenatedEmail)
+vars.put(&quot;email_mismatch&quot;, String.valueOf(!concatenatedEmail.equals(vars.get(&quot;resp_email&quot;))))
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Step 3 - Validate Email Field Pattern (lowercase first_name + last_name @reqres.in)" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="191238471">^[a-z]+\.?[a-z]+@reqres\.in$</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message">Response email does not match lowercase first_name + last_name @reqres.in pattern</stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">1</intProp>
+              <stringProp name="Assertion.scope">variable</stringProp>
+              <stringProp name="Scope.variable">resp_email</stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Step 4 - If Controller (Concatenated Email != Response Email)" enabled="true">
+            <stringProp name="IfController.condition">${__groovy(vars.get(&apos;concatenated_email&apos;) != vars.get(&apos;resp_email&apos;) || vars.get(&apos;concat_no_dot_email&apos;) != vars.get(&apos;resp_email&apos;))}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Step 4 - Log Warning in JMeter" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">def userId = vars.get(&quot;id&quot;)
+def respEmail = vars.get(&quot;resp_email&quot;)
+def sqlConcatDot = vars.get(&quot;concatenated_email&quot;)
+def sqlConcatNoDot = vars.get(&quot;concat_no_dot_email&quot;)
+
+def warnMsg = &quot;[Step 4 Warning] User ID=&quot; + userId + &quot;: Concatenated email (&apos;&quot; + sqlConcatNoDot + &quot;&apos; / &apos;&quot; + sqlConcatDot + &quot;&apos;) does not match response email (&apos;&quot; + respEmail + &quot;&apos;)&quot;
+log.warn(warnMsg)
+SampleResult.setResponseData(warnMsg, &quot;UTF-8&quot;)
+SampleResult.setSuccessful(true)
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223Sampler>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code/>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">results.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code/>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
